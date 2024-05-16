@@ -32,3 +32,8 @@
 .highlight-button:hover {
     background-color: #ebebeb;
 }
+
+.highlight-box p {
+            font-family: "Comic Sans MS", cursive;
+            font-size: 24px;
+            color: #333;
