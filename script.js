@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Informações fixas
-    const name = "João Silva";
-    const birthDate = new Date(1990, 6, 15); // Ano, Mês (0-11), Dia
+    const name = "Kelly Bildziukas";
+    const birthDate = new Date(1978, 5, 25); // Ano, Mês (0-11), Dia
 
     // Elementos do DOM
     document.getElementById("name").textContent = name;
