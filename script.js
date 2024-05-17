@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Informações fixas
-    const name = "Kelly Bildziukas";
     const birthDate = new Date(1978, 5, 25); // Ano, Mês (0-11), Dia
 
     // Elementos do DOM
