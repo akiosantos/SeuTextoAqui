@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Informações fixas
-    const birthDate = new Date(1978, 4, 25); // Ano, Mês (0-11), Dia (Maio é 4, pois é indexado a partir de 0)
+    const birthDate = new Date(1978, 4, 25); // Ano, Mês (0-11), Dia (Maio é 4)
 
     // Elementos do DOM
     document.getElementById("birthdate").textContent = birthDate.toLocaleDateString("pt-BR", { day: 'numeric', month: 'long' });
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Calcula dias até o próximo aniversário
     let nextBirthday = new Date(currentDate.getFullYear(), birthDate.getMonth(), birthDate.getDate());
-    if (currentDate > nextBirthday) {
+    if (currentDate >= nextBirthday) {
         nextBirthday.setFullYear(currentDate.getFullYear() + 1);
     }
 
