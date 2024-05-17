@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", function() {
     if (currentDate > nextBirthday) {
         nextBirthday.setFullYear(currentDate.getFullYear() + 1);
     }
-    const daysUntilBirthday = Math.ceil((nextBirthday - currentDate) / (1000 * 60 * 60 * 24));
+
+    // Calcular a diferença de dias
+    const oneDay = 24 * 60 * 60 * 1000; // Horas * Minutos * Segundos * Milissegundos
+    const daysUntilBirthday = Math.round((nextBirthday - currentDate) / oneDay);
     document.getElementById("days-until-birthday").textContent = daysUntilBirthday;
 });
