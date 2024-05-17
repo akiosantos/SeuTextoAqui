@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const birthDate = new Date(1978, 5, 25); // Ano, Mês (0-11), Dia
 
     // Elementos do DOM
-    document.getElementById("name").textContent = name;
     document.getElementById("birthdate").textContent = birthDate.toLocaleDateString("pt-BR");
 
     // Data atual
@@ -26,5 +25,5 @@ document.addEventListener("DOMContentLoaded", function() {
     // Calcular a diferença de dias
     const oneDay = 24 * 60 * 60 * 1000; // Horas * Minutos * Segundos * Milissegundos
     const daysUntilBirthday = Math.round((nextBirthday - currentDate) / oneDay);
-    document.getElementById("days-until-birthday").textContent = daysUntilBirthday;
+    document.getElementById("days-until-birthday").textContent = daysUntilBirthday + " dias";
 });
