@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Atualize a data aqui
-    const birthDate = new Date(2030, 4, 25); // Ano, Mês (0-11), Dia
+    const birthDate = new Date(2026, 4, 25); // Ano, Mês (0-11), Dia
 
     // Função para atualizar a contagem regressiva
     function updateCountdown() {
         const currentTime = new Date();
         let nextBirthday = new Date(currentTime.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+
+        // Se a data atual já passou do próximo aniversário, ajuste para o próximo ano
         if (currentTime >= nextBirthday) {
             nextBirthday.setFullYear(currentTime.getFullYear() + 1);
         }
@@ -13,14 +15,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const timeDiff = nextBirthday - currentTime;
         const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDiff % (1000 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeDiff % 1000) / 1000);
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        let years = nextBirthday.getFullYear() - birthDate.getFullYear();
-        if (currentTime < nextBirthday) {
-            years -= 1;
-        }
+        // Calcula a diferença de anos
+        const years = nextBirthday.getFullYear() - currentTime.getFullYear();
 
+        // Atualiza o conteúdo dos elementos HTML
         document.getElementById("years").textContent = String(years).padStart(2, '0');
         document.getElementById("days").textContent = String(days).padStart(2, '0');
         document.getElementById("hours").textContent = String(hours).padStart(2, '0');
