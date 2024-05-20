@@ -40,6 +40,10 @@ h1 {
     border-radius: 5px;
 }
 
+.countdown div:first-child { /* Adicionamos este seletor para remover o traço do primeiro elemento */
+    padding-left: 0; /* Removemos o padding da esquerda */
+}
+
 strong {
     color: #555;
 }
