@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
         // Calcula a diferença de anos
-        const years = nextBirthday.getFullYear() - currentTime.getFullYear();
+        const years = nextBirthday.getFullYear() - birthDate.getFullYear();
 
         // Atualiza o conteúdo dos elementos HTML
         document.getElementById("years").textContent = String(years).padStart(2, '0');
