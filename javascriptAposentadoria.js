@@ -13,9 +13,15 @@ document.addEventListener("DOMContentLoaded", function() {
         const timeDiff = nextBirthday - currentTime;
         const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        const minutes = Math.floor((timeDiff % (1000 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % 1000) / 1000);
 
+        let years = nextBirthday.getFullYear() - birthDate.getFullYear();
+        if (currentTime < nextBirthday) {
+            years -= 1;
+        }
+
+        document.getElementById("years").textContent = String(years).padStart(2, '0');
         document.getElementById("days").textContent = String(days).padStart(2, '0');
         document.getElementById("hours").textContent = String(hours).padStart(2, '0');
         document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
