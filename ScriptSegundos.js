@@ -15,14 +15,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const timeDiff = nextEvent - currentTime;
 
-        // Calcula o total de dias, minutos e segundos a partir do número de anos
+        // Calcula o total de dias, horas, minutos e segundos a partir do número de anos
         const totalDays = yearsUntilEvent * 365;
-        const totalMinutes = totalDays * 24 * 60;
+        const totalHours = totalDays * 24;
+        const totalMinutes = totalHours * 60;
         const totalSeconds = totalMinutes * 60;
 
         // Calcula o tempo restante em dias, horas, minutos e segundos
         const days = Math.floor((timeDiff / (1000 * 60 * 60 * 24)) % totalDays);
-        const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+        const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % totalHours);
         const minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
         const seconds = Math.floor((timeDiff / 1000) % 60);
 
