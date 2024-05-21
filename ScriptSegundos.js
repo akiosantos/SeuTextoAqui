@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Defina a data do evento aqui
-    const eventDate = new Date(2027, 7, 15); // Ano, Mês (0-11), Dia
+    const eventDate = new Date(2030, 4, 25); // Ano, Mês (0-11), Dia
     const yearsUntilEvent = 1; // Número de anos até o evento
 
     // Função para atualizar a contagem regressiva
