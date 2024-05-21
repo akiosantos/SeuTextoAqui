@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const eventDate = new Date(2030, 4, 25); // Ano, Mês (0-11), Dia
     const yearsUntilEvent = 1; // Número de anos até o evento
 
-    // Função para converter o tempo total em dias para horas, minutos e segundos
+    // Função para converter o tempo total em dias para horas, minutos, segundos
     function convertDaysToTime(totalDays) {
         const totalHours = totalDays * 24;
         const totalMinutes = totalHours * 60;
@@ -31,14 +31,18 @@ document.addEventListener("DOMContentLoaded", function() {
         // Calcula o tempo total em dias
         const totalDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
-        // Converte o tempo total em dias para horas, minutos e segundos
+        // Converte o tempo total em dias para horas, minutos, segundos
         const time = convertDaysToTime(totalDays);
+
+        // Calcula o tempo total em segundos
+        const totalSeconds = time.seconds;
 
         // Atualiza o conteúdo dos elementos HTML
         document.getElementById("years").textContent = String(yearsUntilEvent).padStart(2, '0');
         document.getElementById("days").textContent = String(time.hours).padStart(2, '0');
         document.getElementById("hours").textContent = String(time.minutes).padStart(2, '0');
         document.getElementById("minutes").textContent = String(time.seconds).padStart(2, '0');
+        document.getElementById("seconds").textContent = String(totalSeconds).padStart(2, '0');
     }
 
     // Atualiza a contagem regressiva imediatamente e a cada segundo
