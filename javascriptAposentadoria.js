@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Atualize a data aqui
-    const birthDate = new Date(2027, 7, 15); // Ano, Mês (0-11), Dia
+    const birthDate = new Date(2030, 4, 25); // Ano, Mês (0-11), Dia
 
     // Função para atualizar a contagem regressiva
     function updateCountdown() {
