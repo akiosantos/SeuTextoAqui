@@ -3,6 +3,19 @@ document.addEventListener("DOMContentLoaded", function() {
     const eventDate = new Date(2030, 4, 25); // Ano, Mês (0-11), Dia
     const yearsUntilEvent = 1; // Número de anos até o evento
 
+    // Função para converter o tempo total em dias para horas, minutos e segundos
+    function convertDaysToTime(totalDays) {
+        const totalHours = totalDays * 24;
+        const totalMinutes = totalHours * 60;
+        const totalSeconds = totalMinutes * 60;
+
+        return {
+            hours: Math.floor(totalHours),
+            minutes: Math.floor(totalMinutes),
+            seconds: Math.floor(totalSeconds)
+        };
+    }
+
     // Função para atualizar a contagem regressiva
     function updateCountdown() {
         const currentTime = new Date();
@@ -15,24 +28,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const timeDiff = nextEvent - currentTime;
 
-        // Calcula o total de dias, horas, minutos e segundos a partir do número de anos
-        const totalDays = yearsUntilEvent * 365;
-        const totalHours = totalDays * 24;
-        const totalMinutes = totalHours * 60;
-        const totalSeconds = totalMinutes * 60;
+        // Calcula o tempo total em dias
+        const totalDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
-        // Calcula o tempo restante em dias, horas, minutos e segundos
-        const days = Math.floor((timeDiff / (1000 * 60 * 60 * 24)) % totalDays);
-        const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % totalHours);
-        const minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
-        const seconds = Math.floor((timeDiff / 1000) % 60);
+        // Converte o tempo total em dias para horas, minutos e segundos
+        const time = convertDaysToTime(totalDays);
 
         // Atualiza o conteúdo dos elementos HTML
         document.getElementById("years").textContent = String(yearsUntilEvent).padStart(2, '0');
-        document.getElementById("days").textContent = String(days).padStart(2, '0');
-        document.getElementById("hours").textContent = String(hours).padStart(2, '0');
-        document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
-        document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+        document.getElementById("days").textContent = String(time.hours).padStart(2, '0');
+        document.getElementById("hours").textContent = String(time.minutes).padStart(2, '0');
+        document.getElementById("minutes").textContent = String(time.seconds).padStart(2, '0');
     }
 
     // Atualiza a contagem regressiva imediatamente e a cada segundo
