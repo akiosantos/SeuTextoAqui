@@ -25,10 +25,6 @@ h1 {
 }
 
 .countdown {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
     font-size: 1.5em;
     font-weight: bold;
 }
@@ -38,10 +34,7 @@ h1 {
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
-}
-
-.countdown div:first-child { /* Adicionamos este seletor para remover o traço do primeiro elemento */
-    padding-left: 0; /* Removemos o padding da esquerda */
+    margin-bottom: 10px; /* Adiciona margem entre os elementos */
 }
 
 strong {
