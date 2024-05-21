@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Defina a data do evento aqui
     const eventDate = new Date(2027, 7, 15); // Ano, Mês (0-11), Dia
+    const yearsUntilEvent = 1; // Número de anos até o evento
 
     // Função para atualizar a contagem regressiva
     function updateCountdown() {
@@ -9,21 +10,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Se a data atual já passou do próximo evento, ajuste para o próximo ano
         if (currentTime >= nextEvent) {
-            nextEvent.setFullYear(currentTime.getFullYear() + 1);
+            nextEvent.setFullYear(currentTime.getFullYear() + yearsUntilEvent);
         }
 
         const timeDiff = nextEvent - currentTime;
-        const totalDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // Total de dias até o próximo evento
 
-        // Calcula o número de anos, dias, horas, minutos e segundos
-        const years = nextEvent.getFullYear() - currentTime.getFullYear();
-        const days = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24)); // Calcula o número de dias restantes após subtrair os anos
-        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        // Calcula o total de dias, minutos e segundos a partir do número de anos
+        const totalDays = yearsUntilEvent * 365;
+        const totalMinutes = totalDays * 24 * 60;
+        const totalSeconds = totalMinutes * 60;
+
+        // Calcula o tempo restante em dias, horas, minutos e segundos
+        const days = Math.floor((timeDiff / (1000 * 60 * 60 * 24)) % totalDays);
+        const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
+        const seconds = Math.floor((timeDiff / 1000) % 60);
 
         // Atualiza o conteúdo dos elementos HTML
-        document.getElementById("years").textContent = String(years).padStart(2, '0');
+        document.getElementById("years").textContent = String(yearsUntilEvent).padStart(2, '0');
         document.getElementById("days").textContent = String(days).padStart(2, '0');
         document.getElementById("hours").textContent = String(hours).padStart(2, '0');
         document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
