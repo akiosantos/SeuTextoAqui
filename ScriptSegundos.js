@@ -1,48 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Defina a data do evento aqui
     const eventDate = new Date(2030, 4, 25); // Ano, Mês (0-11), Dia
-    const yearsUntilEvent = 1; // Número de anos até o evento
-
-    // Função para converter o tempo total em dias para horas, minutos, segundos
-    function convertDaysToTime(totalDays) {
-        const totalHours = totalDays * 24;
-        const totalMinutes = totalHours * 60;
-        const totalSeconds = totalMinutes * 60;
-
-        return {
-            hours: Math.floor(totalHours),
-            minutes: Math.floor(totalMinutes),
-            seconds: Math.floor(totalSeconds)
-        };
-    }
 
     // Função para atualizar a contagem regressiva
     function updateCountdown() {
         const currentTime = new Date();
-        let nextEvent = new Date(eventDate);
+        const timeDiff = eventDate - currentTime;
 
-        // Se a data atual já passou do próximo evento, ajuste para o próximo ano
-        if (currentTime >= nextEvent) {
-            nextEvent.setFullYear(currentTime.getFullYear() + yearsUntilEvent);
-        }
-
-        const timeDiff = nextEvent - currentTime;
-
-        // Calcula o tempo total em dias
-        const totalDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
-        // Converte o tempo total em dias para horas, minutos, segundos
-        const time = convertDaysToTime(totalDays);
+        const years = eventDate.getFullYear() - currentTime.getFullYear();
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 365;
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
         // Calcula o tempo total em segundos
-        const totalSeconds = time.seconds;
+        const totalSeconds = Math.floor(timeDiff / 1000);
 
         // Atualiza o conteúdo dos elementos HTML
-        document.getElementById("years").textContent = String(yearsUntilEvent).padStart(2, '0');
-        document.getElementById("days").textContent = String(time.hours).padStart(2, '0');
-        document.getElementById("hours").textContent = String(time.minutes).padStart(2, '0');
-        document.getElementById("minutes").textContent = String(time.seconds).padStart(2, '0');
-        document.getElementById("seconds").textContent = String(totalSeconds).padStart(2, '0');
+        document.getElementById("years").textContent = String(years).padStart(2, '0');
+        document.getElementById("days").textContent = String(days).padStart(2, '0');
+        document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+        document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+        document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+        document.getElementById("totalSeconds").textContent = String(totalSeconds).padStart(2, '0');
     }
 
     // Atualiza a contagem regressiva imediatamente e a cada segundo
